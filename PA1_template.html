@@ -162,17 +162,13 @@ hist(total_steps_by_date$steps,
 ##################################
 
 mn &lt;- round(mean(total_steps_by_date$steps),digits=2)</code></pre>
-<div id="the-mean-total-steps-per-day-is-10766.19" class="section level5">
-<h5><strong>The MEAN total steps per day is: 10766.19</strong></h5>
+<p><strong>The MEAN total steps per day is: 10766.19</strong></p>
 <pre class="r"><code>##################################
 #Calculate Median Steps Per Day
 ##################################
 
 md &lt;- round(median(total_steps_by_date$steps),digits=2)</code></pre>
-</div>
-<div id="the-median-total-steps-per-day-is-10765" class="section level5">
-<h5><strong>The MEDIAN total steps per day is: 10765</strong></h5>
-</div>
+<p><strong>The MEDIAN total steps per day is: 10765</strong></p>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
 <h2>What is the average daily activity pattern?</h2>
@@ -197,9 +193,7 @@ ggplot(average_steps_by_interval, aes(x=interval, y=steps)) +
 ##################################
 
 max_average_steps_interval &lt;- average_steps_by_interval[average_steps_by_interval$steps==max(average_steps_by_interval$steps),]</code></pre>
-<div id="the-max-average-steps-per-day-was-206.17-and-occurred-in-interval-835." class="section level5">
-<h5><strong>The MAX average steps per day was 206.17 and occurred in interval 835</strong>.</h5>
-</div>
+<p><strong>The MAX average steps per day was 206.17 and occurred in interval 835</strong>.</p>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
@@ -210,8 +204,7 @@ max_average_steps_interval &lt;- average_steps_by_interval[average_steps_by_inte
 invalid_data &lt;- activity_data[is.na(activity_data$steps),]
 
 cnt_invalid_data &lt;- count(invalid_data)</code></pre>
-<div id="there-are-2304-missing-values-in-the-dataset." class="section level5">
-<h5><strong>There are 2304 missing values in the dataset.</strong></h5>
+<p><strong>There are 2304 missing values in the dataset.</strong></p>
 <pre class="r"><code>##################################
 #Create Data with Imputed Values
 ##################################
@@ -247,21 +240,14 @@ hist(total_steps_by_date_imputed$steps,
 ##################################
 
 mn_i &lt;- round(mean(total_steps_by_date_imputed$steps),digits=2)</code></pre>
-</div>
-<div id="the-mean-total-steps-per-day-after-imputing-is-10766.19" class="section level5">
-<h5><strong>The MEAN total steps per day (after imputing) is: 10766.19</strong></h5>
+<p><strong>The MEAN total steps per day (after imputing) is: 10766.19</strong></p>
 <pre class="r"><code>##################################
 #Calculate Median Steps Per Day (after imputing)
 ##################################
 
 md_i &lt;- round(median(total_steps_by_date_imputed$steps),digits=2)</code></pre>
-</div>
-<div id="the-median-total-steps-per-day-after-imputing-is-10766.19" class="section level5">
-<h5><strong>The MEDIAN total steps per day (after imputing) is: 10766.19</strong></h5>
-</div>
-<div id="imputing-the-missing-values-did-not-affect-the-mean.-however-the-median-was-affected." class="section level5">
-<h5><strong>Imputing the missing values did not affect the MEAN. However, the MEDIAN was affected.</strong></h5>
-</div>
+<p><strong>The MEDIAN total steps per day (after imputing) is: 10766.19</strong></p>
+<p><strong>Imputing the missing values did not affect the MEAN. However, the MEDIAN was affected.</strong></p>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>

@@ -60,7 +60,7 @@ mn <- round(mean(total_steps_by_date$steps),digits=2)
 
 ```
 
-#####**The MEAN total steps per day is: `r as.character(mn)[1]`** 
+**The MEAN total steps per day is: `r as.character(mn)[1]`** 
 
 ```{r}
 
@@ -72,7 +72,7 @@ md <- round(median(total_steps_by_date$steps),digits=2)
 
 ```
 
-#####**The MEDIAN total steps per day is: `r as.character(md)[1]`**  
+**The MEDIAN total steps per day is: `r as.character(md)[1]`**  
 
 ## What is the average daily activity pattern?
 
@@ -106,7 +106,7 @@ max_average_steps_interval <- average_steps_by_interval[average_steps_by_interva
 
 ```
 
-#####**The MAX average steps per day was `r as.character(round(max_average_steps_interval[2],digits=2))[1]` and occurred in interval `r as.character(max_average_steps_interval[1])[1]`**.  
+**The MAX average steps per day was `r as.character(round(max_average_steps_interval[2],digits=2))[1]` and occurred in interval `r as.character(max_average_steps_interval[1])[1]`**.  
 
 ## Imputing missing values
 
@@ -122,7 +122,7 @@ cnt_invalid_data <- count(invalid_data)
 
 ```
 
-#####**There are `r as.character(cnt_invalid_data)[1]` missing values in the dataset.**  
+**There are `r as.character(cnt_invalid_data)[1]` missing values in the dataset.**  
 
 ```{r}
 
@@ -173,7 +173,7 @@ mn_i <- round(mean(total_steps_by_date_imputed$steps),digits=2)
 
 ```
 
-#####**The MEAN total steps per day (after imputing) is: `r as.character(mn_i)[1]`** 
+**The MEAN total steps per day (after imputing) is: `r as.character(mn_i)[1]`** 
 
 ```{r}
 
@@ -185,9 +185,9 @@ md_i <- round(median(total_steps_by_date_imputed$steps),digits=2)
 
 ```
 
-#####**The MEDIAN total steps per day (after imputing) is: `r as.character(md_i)[1]`**  
+**The MEDIAN total steps per day (after imputing) is: `r as.character(md_i)[1]`**  
 
-#####**Imputing the missing values did not affect the MEAN. However, the MEDIAN was affected.**  
+**Imputing the missing values did not affect the MEAN. However, the MEDIAN was affected.**  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

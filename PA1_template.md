@@ -54,7 +54,7 @@ hist(total_steps_by_date$steps,
 mn <- round(mean(total_steps_by_date$steps),digits=2)
 ```
 
-#####**The MEAN total steps per day is: 10766.19** 
+**The MEAN total steps per day is: 10766.19** 
 
 
 ```r
@@ -65,7 +65,7 @@ mn <- round(mean(total_steps_by_date$steps),digits=2)
 md <- round(median(total_steps_by_date$steps),digits=2)
 ```
 
-#####**The MEDIAN total steps per day is: 10765**  
+**The MEDIAN total steps per day is: 10765**  
 
 ## What is the average daily activity pattern?
 
@@ -99,7 +99,7 @@ ggplot(average_steps_by_interval, aes(x=interval, y=steps)) +
 max_average_steps_interval <- average_steps_by_interval[average_steps_by_interval$steps==max(average_steps_by_interval$steps),]
 ```
 
-#####**The MAX average steps per day was 206.17 and occurred in interval 835**.  
+**The MAX average steps per day was 206.17 and occurred in interval 835**.  
 
 ## Imputing missing values
 
@@ -114,7 +114,7 @@ invalid_data <- activity_data[is.na(activity_data$steps),]
 cnt_invalid_data <- count(invalid_data)
 ```
 
-#####**There are 2304 missing values in the dataset.**  
+**There are 2304 missing values in the dataset.**  
 
 
 ```r
@@ -164,7 +164,7 @@ hist(total_steps_by_date_imputed$steps,
 mn_i <- round(mean(total_steps_by_date_imputed$steps),digits=2)
 ```
 
-#####**The MEAN total steps per day (after imputing) is: 10766.19** 
+**The MEAN total steps per day (after imputing) is: 10766.19** 
 
 
 ```r
@@ -175,9 +175,9 @@ mn_i <- round(mean(total_steps_by_date_imputed$steps),digits=2)
 md_i <- round(median(total_steps_by_date_imputed$steps),digits=2)
 ```
 
-#####**The MEDIAN total steps per day (after imputing) is: 10766.19**  
+**The MEDIAN total steps per day (after imputing) is: 10766.19**  
 
-#####**Imputing the missing values did not affect the MEAN. However, the MEDIAN was affected.**  
+**Imputing the missing values did not affect the MEAN. However, the MEDIAN was affected.**  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

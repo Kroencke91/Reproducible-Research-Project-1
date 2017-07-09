@@ -1,13 +1,8 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 ## Loading and preprocessing the data
-```{r message=FALSE, results="hide"}
 
+```r
 ##################################
 #Initialize
 ##################################
@@ -23,14 +18,13 @@ library(dplyr)
 activity_data <- read.csv(unz("activity.zip","activity.csv"), header=TRUE, na.strings="NA", sep=",", quote="\"")
 
 valid_data <- activity_data[!is.na(activity_data$steps),]
-
 ```
    
 
 ## What is mean total number of steps taken per day?
 
-```{r}
 
+```r
 ##################################
 #Calculate Total Steps Per Day
 ##################################
@@ -47,37 +41,36 @@ hist(total_steps_by_date$steps,
      ylab="Number of Days", 
      col="green",
      ylim=range(0:35))
-
 ```
 
-```{r}
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
+
+```r
 ##################################
 #Calculate Mean Steps Per Day
 ##################################
 
 mn <- round(mean(total_steps_by_date$steps),digits=2)
-
 ```
 
-#####**The MEAN total steps per day is: `r as.character(mn)[1]`** 
+#####**The MEAN total steps per day is: 10766.19** 
 
-```{r}
 
+```r
 ##################################
 #Calculate Median Steps Per Day
 ##################################
 
 md <- round(median(total_steps_by_date$steps),digits=2)
-
 ```
 
-#####**The MEDIAN total steps per day is: `r as.character(md)[1]`**  
+#####**The MEDIAN total steps per day is: 10765**  
 
 ## What is the average daily activity pattern?
 
-```{r}
 
+```r
 ##################################
 #Calculate Mean Steps By Interval
 ##################################
@@ -93,25 +86,25 @@ ggplot(average_steps_by_interval, aes(x=interval, y=steps)) +
   xlab("Interval") +
   ylab("Steps Taken") +
   ggtitle("Average Steps Taken By Interval")
-
 ```
 
-```{r}
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
+
+```r
 ##################################
 #Interval With Max Mean Steps
 ##################################
 
 max_average_steps_interval <- average_steps_by_interval[average_steps_by_interval$steps==max(average_steps_by_interval$steps),]
-
 ```
 
-#####**The MAX average steps per day was `r as.character(round(max_average_steps_interval[2],digits=2))[1]` and occurred in interval `r as.character(max_average_steps_interval[1])[1]`**.  
+#####**The MAX average steps per day was 206.17 and occurred in interval 835**.  
 
 ## Imputing missing values
 
-```{r}
 
+```r
 ##################################
 #Count of Days with No Data
 ##################################
@@ -119,13 +112,12 @@ max_average_steps_interval <- average_steps_by_interval[average_steps_by_interva
 invalid_data <- activity_data[is.na(activity_data$steps),]
 
 cnt_invalid_data <- count(invalid_data)
-
 ```
 
-#####**There are `r as.character(cnt_invalid_data)[1]` missing values in the dataset.**  
+#####**There are 2304 missing values in the dataset.**  
 
-```{r}
 
+```r
 ##################################
 #Create Data with Imputed Values
 ##################################
@@ -139,11 +131,10 @@ names(fixed_data) <- c("steps","date","interval","avg")
 fixed_data$steps <- ifelse(is.na(fixed_data$steps), fixed_data$avg, fixed_data$steps)
 
 fixed_data <- fixed_data[1:3]
-
 ```
 
-```{r}
 
+```r
 ##################################
 #Calculate Total Steps Per Day (after imputing)
 ##################################
@@ -160,39 +151,38 @@ hist(total_steps_by_date_imputed$steps,
      ylab="Number of Days", 
      col="orange",
      ylim=range(0:40))
-
 ```
 
-```{r}
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
+
+```r
 ##################################
 #Calculate Mean Steps Per Day (after imputing)
 ##################################
 
 mn_i <- round(mean(total_steps_by_date_imputed$steps),digits=2)
-
 ```
 
-#####**The MEAN total steps per day (after imputing) is: `r as.character(mn_i)[1]`** 
+#####**The MEAN total steps per day (after imputing) is: 10766.19** 
 
-```{r}
 
+```r
 ##################################
 #Calculate Median Steps Per Day (after imputing)
 ##################################
 
 md_i <- round(median(total_steps_by_date_imputed$steps),digits=2)
-
 ```
 
-#####**The MEDIAN total steps per day (after imputing) is: `r as.character(md_i)[1]`**  
+#####**The MEDIAN total steps per day (after imputing) is: 10766.19**  
 
 #####**Imputing the missing values did not affect the MEAN. However, the MEDIAN was affected.**  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r}
 
+```r
 ##################################
 #Set Day of Week Category Factor
 ##################################
@@ -204,11 +194,10 @@ fixed_data <- mutate(fixed_data, dow_cat = ifelse(fixed_data$dow %in% c("Sunday"
 fixed_data$dow_cat <- as.factor(fixed_data$dow_cat)
 
 fixed_data$interval <- as.factor(fixed_data$interval)
-
 ```
 
-```{r}
 
+```r
 ##################################
 #Calculate Mean Steps By Weekday Type & Interval 
 ##################################
@@ -228,5 +217,6 @@ xyplot(steps~interval|factor(dow_cat),
        xlab='Interval',
        ylab='Number of Steps',
        xlim=seq(-100,2500,500))
-
 ```
+
+![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
